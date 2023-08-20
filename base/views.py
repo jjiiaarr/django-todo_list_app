@@ -34,6 +34,13 @@ class RegisterPage(FormView):
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
+        form.fields['username'].error_messages = {
+            'unique': "This username is already taken",
+        }
+
+        form.fields['password2'].error_messages = {
+            'password2': "The password did not match",
+        }
         user = form.save()
         if user is not None:
             login(self.request, user)
