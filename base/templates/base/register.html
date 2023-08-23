@@ -6,7 +6,7 @@
 
 <div class="card-body">
   <form method="post">
-    {% csrf_token %} {{form.username.errors}}
+    {% csrf_token %} {{ form.as_p }}
     <label>{{form.username.label}}</label>
     {{form.username}}
 
